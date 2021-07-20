@@ -2,6 +2,8 @@ from GUI.board import createBoard
 import pygame as py
 import sys
 
+
+
 def main():
     py.init()
     infoObject = py.display.Info()
@@ -14,13 +16,16 @@ def main():
     while running:
         ## bei einem pygame event: ...
         for event in py.event.get():
-            if event.type == py.KEYUP:
+            if event.type == py.QUIT:
                 ##setup board
                 running = False
                 break
+            if  event.type == py.KEYDOWN:
+                if event.key == py.K_ESCAPE:
+                    running = False
+                    break
             
     sys.exit()
-
                 
 if __name__ == '__main__':
     main()
